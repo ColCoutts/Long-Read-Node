@@ -6,16 +6,11 @@ http.createServer((request, response) => {
     response.end();
 }).listen(3000);
 
-//Passing Functions Around
-
-function say(word) {
-    console.log(word);
+function onRequest(request, response) {
+    response.writeHead(200, 'Content-Type', 'text/plain');
+    response.write('Hello All');
+    console.log('client connected');
+    response.end();
 }
 
-function execute(someFunction, value) {
-    someFunction(value);
-}
-
-execute(say, 'hello');
-
-execute(function(word){ console.log(word) }, 'Hello Dear');
+http.createServer(onRequest).listen(8888);
