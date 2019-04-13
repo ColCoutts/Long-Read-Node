@@ -1,5 +1,5 @@
 const http = require('http');
-
+const url = require('url');
 // http.createServer((request, response) => {
 //     response.setHeader('Content-Type', 'text/plain');
 //     response.write('Hello World');
@@ -8,7 +8,8 @@ const http = require('http');
 
 function start() {
     function onRequest(request, response) {
-        console.log('Request Received from client');
+        const pathname = url.parse(request.url).pathname;
+        console.log('Request for ', pathname, ' received');
         response.writeHead(200, 'Content-Type', 'text/plain');
         response.write('Hello All');
         response.end();
