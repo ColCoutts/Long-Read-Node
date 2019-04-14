@@ -16,6 +16,7 @@ function start(route, handle) {
 
         request.addListener('end', function() {
             route(handle, pathname, response, postData);
+            console.log('sending this data to ' + handle + pathname);
         });
     }
     http.createServer(onRequest).listen(8888);
