@@ -27,14 +27,16 @@ function start(response) {
 function upload(request, response) {
     console.log('Request handler "upload" was called');
 
-    let form = new formidable.IncomingForm();
+    let form = new formidable.IncomingForm(), files = [], fields = [];
     console.log('about to parse');
     form.parse(request, function(error, fields, files) {
+        console.dir(request.headers);
+        console.log(request.headers);
         console.log('parsing done');
-        fs.rename(fields.upload + '', '/tmp/test.png', function(error) {
+        fs.rename(files.file.path, '/tmp/test.png', function(error) {
             if(error) {
                 fs.unlink('/tmp/test.png');
-                fs.rename(files.upload + '', '/tmp/test.png');
+                fs.rename(files.file.path, '/tmp/test.png');
             }
         });
         response.writeHead(200, 'Content-Type', 'text/html');
