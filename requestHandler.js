@@ -32,7 +32,7 @@ function upload(response, request) {
     // console.log('------------',request);
     form.parse(request, function(error, fields, files) {
         console.log('parsing done');
-        fs.rename(files.upload.path, '/tmp/alf.png', function(error) {
+        fs.rename(files.upload.path, '/tmp/test.png', function(error) {
             if(error) {
                 fs.unlink('/tmp/test.png');
                 fs.rename(files.upload.path, '/tmp/test.png');
