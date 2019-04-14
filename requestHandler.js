@@ -12,11 +12,11 @@ function start(response) {
 
 function upload(response) {
     console.log('Request handler "upload" was called');
-    response.setHeader('Content-Type', 'text/plain');
+    response.writeHead(200, 'Content-Type', 'text/plain');
     response.write('Hello UPLOAD');
     response.end();
-
 }
+
 
 exports.start = start;
 exports.upload = upload;
