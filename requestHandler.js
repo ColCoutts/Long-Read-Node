@@ -29,7 +29,6 @@ function upload(response, request) {
 
     let form = new formidable.IncomingForm();
     console.log('about to parse');
-    // console.log('------------',request);
     form.parse(request, function(error, fields, files) {
         console.log('parsing done');
         fs.rename(files.upload.path, '/tmp/test.png', function(error) {
